@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, setLanguage, setToken } from "@/Redux/User/User";
 
-export const Home = () => {
+export const Home = ({ navigation }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -27,6 +27,10 @@ export const Home = () => {
       >
         Generate Random Inpiration and Life Quotes Everyday to keep motivated.
       </Text>
+      <Button
+        title="Go to Search"
+        onPress={() => navigation.navigate("Search")}
+      />
     </View>
   );
 };
