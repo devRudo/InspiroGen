@@ -1,29 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { persistor, store } from "@/Redux";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { Home } from "@/Screens/Home/Home";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Inspiro Gen</Text>
-      <Text
-        style={{
-          textAlign: "center",
-          marginTop: 10,
-          padding: 16,
-        }}
-      >
-        Generate Random Inpiration and Life Quotes Everyday to keep motivated.
-      </Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Home />
+        <StatusBar style="auto" />
+      </PersistGate>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
