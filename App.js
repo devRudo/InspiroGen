@@ -10,6 +10,7 @@ import {
   PaperProvider,
 } from "react-native-paper";
 import AppNavigation from "@/Navigations/AppNavigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const theme = {
@@ -25,10 +26,10 @@ export default function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <PersistGate loading={null} persistor={persistor}>
-          <View style={styles.container}>
+          <SafeAreaView style={styles.container}>
             <StatusBar barStyle={"dark-content"} style="auto" />
             <AppNavigation />
-          </View>
+          </SafeAreaView>
         </PersistGate>
       </PaperProvider>
     </Provider>
