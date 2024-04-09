@@ -25,7 +25,7 @@ const ActionButtons = ({}) => {
       />
       <IconButton
         mode="contained"
-        icon={() => <Ionicons name="share-outline" size={24} />}
+        icon={() => <Ionicons name="share-social-outline" size={24} />}
         iconColor={theme.colors.primary}
         size={24}
         onPress={() => console.log("Pressed")}
