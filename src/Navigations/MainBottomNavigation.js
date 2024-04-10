@@ -16,6 +16,10 @@ const MainBottomNavigation = () => {
       initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
+        headerShown: false,
+        tabBarStyle: {
+          // paddingBottom: 0,
+        },
       }}
     >
       <Tabs.Screen
@@ -32,7 +36,7 @@ const MainBottomNavigation = () => {
               style={{ width: 40, height: 40 }}
             />
           ),
-          //   headerShown: false,
+          headerShown: false,
         }}
       />
       <Tabs.Screen

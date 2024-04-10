@@ -1,7 +1,9 @@
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import React from "react";
+import { useTheme } from "react-native-paper";
 
 const Loader = ({}) => {
+  const theme = useTheme();
   return (
     <View
       style={{
@@ -10,7 +12,11 @@ const Loader = ({}) => {
         alignContent: "center",
       }}
     >
-      <ActivityIndicator size="small" />
+      <ActivityIndicator
+        animating={true}
+        color={theme.colors.primary}
+        size="large"
+      />
     </View>
   );
 };

@@ -4,28 +4,36 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, setLanguage, setToken } from "@/Redux/User/User";
 import Quote from "@/Components/Quote";
 import ActionButtons from "@/Components/ActionButtons";
+import { useRefreshOnFocus } from "@/Hooks/useRefreshOnFocus";
+import { useRandomQuote } from "@/Hooks/useRandomQuote";
+import Loader from "@/Components/Loader";
+import Error from "@/Components/Error";
 
 export const Home = ({ navigation }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  console.log(user);
+  const { data, refetch, isError, isFetching, error } = useRandomQuote();
+  // console.log(user);
+
+  useRefreshOnFocus(refetch); // TODO: Uncomment after all testing is done
 
   useEffect(() => {
-    // dispatch(setUserInfo("test"));
-    // dispatch(setToken("test"));
-    // dispatch(setLanguage("test"));
+    // refetch();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Quote
-        quote={
-          "Headline Medium Look at the sky. We are not alone. The whole universe is friendly to us and conspires only to give the best to those who dream and work."
-        }
-        author={"- A.P.J. Abdul Kalam"}
-      />
-      <ActionButtons />
+      {isFetching ? (
+        <Loader />
+      ) : isError ? (
+        <Error error={error} />
+      ) : data ? (
+        <>
+          <Quote quote={data?.content} author={`- ${data?.author}`} />
+          <ActionButtons />
+        </>
+      ) : null}
     </View>
   );
 };
@@ -36,5 +44,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 20,
     gap: 20,
+    justifyContent: "center",
   },
 });

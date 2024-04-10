@@ -1,7 +1,8 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import SearchTab from "@/Screens/SearchTab/SearchTab";
+import Authors from "@/Screens/Authors/Authors";
+import Tags from "@/Screens/Tags/Tags";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import SearchInput from "@/Components/SearchInput";
 import { useTheme } from "react-native-paper";
@@ -24,21 +25,21 @@ const SearchMaterialTopNavigator = () => {
       >
         <Tabs.Screen
           name="Authors"
-          component={SearchTab}
+          component={Authors}
           options={{
             title: "Authors",
           }}
         />
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="Quotes"
           component={SearchTab}
           options={{
             title: "Quotes",
           }}
-        />
+        /> */}
         <Tabs.Screen
           name="Tags"
-          component={SearchTab}
+          component={Tags}
           options={{
             title: "Tags",
           }}

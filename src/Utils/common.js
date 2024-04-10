@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Dimensions, Platform } from "react-native";
 
+const isWeb = () => {
+  return Platform.OS === "web";
+};
+
 const isIOS = () => {
   return Platform.OS === "ios";
 };
@@ -20,6 +24,7 @@ const randomColor = () => {
 };
 
 export {
+  isWeb,
   isIOS,
   isAndroid,
   SCREEN_WIDTH,

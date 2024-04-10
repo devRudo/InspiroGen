@@ -25,7 +25,9 @@ const Quote = ({ quote, author }) => {
         </Text>
       </View>
       <View style={{ ...styles.authorContainer }}>
-        <Text style={{ color: theme.colors.backdrop }}>{author}</Text>
+        <Text variant="titleMedium" style={{ color: theme.colors.backdrop }}>
+          {author}
+        </Text>
       </View>
     </View>
   );

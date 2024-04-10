@@ -73,7 +73,11 @@ export const Profile = ({ navigation }) => {
           "Life",
           "Adventure",
         ].map((item) => (
-          <Chip ellipsizeMode={"clip"} onPress={() => console.log("Pressed")}>
+          <Chip
+            key={item}
+            ellipsizeMode={"clip"}
+            onPress={() => console.log("Pressed")}
+          >
             {item}
           </Chip>
         ))}
