@@ -7,17 +7,27 @@ import {
   useTheme,
   Button,
 } from "react-native-paper";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, setLanguage, setToken } from "@/Redux/User/User";
 import { Ionicons } from "@expo/vector-icons";
+import { supabase } from "@/Utils/supabase";
 
 export const Profile = ({ navigation }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
 
-  console.log(user);
+  const handleLogout = async () => {
+    setLoading(true);
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      setSnackbarMessage(error.message);
+      setSnackbarVisible(true);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {}, []);
 
@@ -123,7 +133,9 @@ export const Profile = ({ navigation }) => {
         )}
         mode="outlined"
         textColor={theme.colors.error}
-        onPress={() => {}}
+        onPress={() => {
+          handleLogout();
+        }}
         style={{
           borderColor: theme.colors.error,
           alignSelf: "center",

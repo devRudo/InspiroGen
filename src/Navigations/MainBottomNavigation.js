@@ -7,6 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Profile } from "@/Screens/Profile/Profile";
 import { Favorites } from "@/Screens/Favorites/Favorites";
 import SearchMaterialTopNavigator from "./SearchMaterialTopNavigator";
+import Signin from "@/Screens/Signin/Signin";
+import Signup from "@/Screens/Signup/Signup";
 
 const Tabs = createBottomTabNavigator();
 
